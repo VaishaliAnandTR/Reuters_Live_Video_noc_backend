@@ -2,17 +2,10 @@ import { NextFunction, Request, Response } from 'express';
 import { throwError } from '../Util/ErrorHandler';
 import { HTTP_STATUS_CODE, HTTP_STATUS_TYPE } from '../Util/HttpCodes';
 import { Logger } from '../Util/Logger';
-const trustedOrigins = [
-  'http://localhost:8089',
-  'https://another-trusted-domain.com',
-];
+const trustedOrigins = ['http://localhost:8089', 'https://another-trusted-domain.com'];
 
 // Middleware to check Referer/Origin headers
-export const checkRefererOrigin = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const checkRefererOrigin = (req: Request, res: Response, next: NextFunction) => {
   const referer = req.get('Referer');
   const origin = req.get('Origin');
   Logger.info(

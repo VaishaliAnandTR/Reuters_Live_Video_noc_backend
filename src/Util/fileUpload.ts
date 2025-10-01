@@ -27,12 +27,7 @@ export const fileFilter = (req: any, file: any, cb: any) => {
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(
-      new Error(
-        'Invalid file type. Only JPG, PNG, Doc, Excel, and PDF are allowed!'
-      ),
-      false
-    );
+    cb(new Error('Invalid file type. Only JPG, PNG, Doc, Excel, and PDF are allowed!'), false);
   }
 };
 
@@ -95,8 +90,7 @@ export const ItemUpload = async (req: any, res: Response) => {
       const application_id = req.params.application_id;
       const appendTimestampParam: any = req.params.append_timestamp;
 
-      const appendTimestamp =
-        appendTimestampParam === 'true' || appendTimestampParam === true;
+      const appendTimestamp = appendTimestampParam === 'true' || appendTimestampParam === true;
       const folderPath = `${formname}/${application_id}`;
       const cleanFileName = originalname.replace(/ /g, '_');
 
@@ -114,32 +108,14 @@ export const ItemUpload = async (req: any, res: Response) => {
         const [exists] = await blob.exists();
         if (exists) {
           // File exists, update (overwrite)
-          uploadToGCP(
-            blob,
-            buffer,
-            mimetype,
-            res,
-            'File updated successfully!'
-          );
+          uploadToGCP(blob, buffer, mimetype, res, 'File updated successfully!');
         } else {
           // File does not exist, upload new
-          uploadToGCP(
-            blob,
-            buffer,
-            mimetype,
-            res,
-            'File uploaded successfully!'
-          );
+          uploadToGCP(blob, buffer, mimetype, res, 'File uploaded successfully!');
         }
       } else {
         // Always upload new file with timestamp
-        uploadToGCP(
-          blob,
-          buffer,
-          mimetype,
-          res,
-          'File uploaded successfully with timestamp!'
-        );
+        uploadToGCP(blob, buffer, mimetype, res, 'File uploaded successfully with timestamp!');
       }
     });
   } catch (err: any) {

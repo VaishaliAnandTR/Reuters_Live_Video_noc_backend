@@ -35,11 +35,7 @@ export class GcpClient {
         credentials: this.credentials,
       });
     } catch (err) {
-      Logger.error(
-        'gcp-Client>GcpClient: Error in authorize',
-        'authorize',
-        err
-      );
+      Logger.error('gcp-Client>GcpClient: Error in authorize', 'authorize', err);
       return err;
     }
   }

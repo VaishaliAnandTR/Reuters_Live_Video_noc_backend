@@ -1,4 +1,3 @@
-
 // require('elastic-apm-node').start({
 //   // Override the service name from package.json
 //   // Allowed characters: a-z, A-Z, 0-9, -, _, and space
@@ -23,7 +22,8 @@ import MongoDbConnection from './Models/index';
 const PORT = config.port;
 const app: Express = express();
 //MongoDbConnection.connect();
-initCommonMiddlewares(app)
-    .then((parentApp: Express) => {
-        parentApp.listen(PORT, () => Logger.info(`Running on ${PORT}`, 'Main.ts->initCommonMiddlewares', PORT));
-    });
+initCommonMiddlewares(app).then((parentApp: Express) => {
+  parentApp.listen(PORT, () =>
+    Logger.info(`Running on ${PORT}`, 'Main.ts->initCommonMiddlewares', PORT)
+  );
+});

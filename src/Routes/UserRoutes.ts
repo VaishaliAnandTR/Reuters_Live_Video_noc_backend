@@ -34,5 +34,4 @@ router.get('/users/:id', (req, res) => {
   res.send({ id: userId, name: 'Alice' });
 });
 
-
 export default router;

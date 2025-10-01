@@ -199,8 +199,7 @@ export class LoggerClass implements LoggerInterface {
           } else {
             if (
               this.blockedKeywords.find(
-                (blockedKey: any) =>
-                  key.toLowerCase() === blockedKey.toLowerCase()
+                (blockedKey: any) => key.toLowerCase() === blockedKey.toLowerCase()
               )
             ) {
               request[key] = 'XXXXXXXXXX';

@@ -22,7 +22,7 @@ const connect = () => {
     Logger.info(`[Server] connected to MongoDB`, 'connect');
   });
 
-  database.on('error', (err={}) => {
+  database.on('error', (err = {}) => {
     Logger.error(`[Server] error connecting to MongoDB`, 'connect', err);
     process.exit(-1);
   });

@@ -11,18 +11,18 @@ const spanIdKey = 'spanId';
  * setTracers - to set the request tracers on the request
  */
 export const setTracers = (req: Request, res: Response, next: NextFunction) => {
-    const headerName = TRACE_ID_HEADER_NAME.toLocaleLowerCase();
-    ns.bindEmitter(req);
-    ns.bindEmitter(res);
-    const traceId = req.headers[headerName] || uuidv4();// to be passed in headers
-    const spanId = uuidv4();// will be unique for services
+  const headerName = TRACE_ID_HEADER_NAME.toLocaleLowerCase();
+  ns.bindEmitter(req);
+  ns.bindEmitter(res);
+  const traceId = req.headers[headerName] || uuidv4(); // to be passed in headers
+  const spanId = uuidv4(); // will be unique for services
 
-    ns.run(() => {
-      ns.set(traceIdKey, traceId);
-      ns.set(spanIdKey, spanId);
-      next();
-    });
-  };
+  ns.run(() => {
+    ns.set(traceIdKey, traceId);
+    ns.set(spanIdKey, spanId);
+    next();
+  });
+};
 
-  export const getTraceId = () => ns.get(traceIdKey);
-  export const getSpanId = () => ns.get(spanIdKey);
+export const getTraceId = () => ns.get(traceIdKey);
+export const getSpanId = () => ns.get(spanIdKey);

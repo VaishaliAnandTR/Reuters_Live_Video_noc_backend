@@ -1,9 +1,5 @@
 import dotenv from 'dotenv';
-import {
-  DEFAULT_APP_NAME,
-  DEFAULT_APP_PORT,
-  DEFAULT_HOST_NAME,
-} from '../Util/Constants'
+import { DEFAULT_APP_NAME, DEFAULT_APP_PORT, DEFAULT_HOST_NAME } from '../Util/Constants';
 
 dotenv.config();
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '1';
@@ -34,7 +30,7 @@ export default {
     USER: process.env.MONGO_USER,
     PASS: process.env.MONGO_PASS,
   },
-   CORS: {
+  CORS: {
     ORIGIN: handleCorsOrigin(process.env.CORS_ORIGIN?.split(',') ?? []),
     CREDENTIALS: process.env.CORS_CREDENTIALS === 'true' ? true : false,
   },
@@ -56,9 +52,7 @@ export default {
     CLIENT_X509_CERT_URL: process.env.CLIENT_X509_CERT_URL,
     UNIVERSE_DOMAIN: process.env.UNIVERSE_DOMAIN,
     BUCKET_NAME: process.env.BUCKET_NAME,
-    ALLOWED_MIME_TYPES: handleMimetypes(
-      process.env.ALLOWED_MIME_TYPES?.split(',') || []
-    ),
+    ALLOWED_MIME_TYPES: handleMimetypes(process.env.ALLOWED_MIME_TYPES?.split(',') || []),
     ALLOWED_TYPES: handleMimetypes(process.env.ALLOWED_TYPES?.split(',') || []),
     ALLOWED_SIZE: Number(process.env.ALLOWED_SIZE) || 20, // 20 MB
     STATIC_SITE_BUCKET_NAME: process.env.STATIC_SITE_BUCKET_NAME || '',

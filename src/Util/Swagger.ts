@@ -16,9 +16,9 @@ const options = {
       },
     ],
   },
-  apis: [ './src/Routes/*.ts', './src/Routes/*.js'], // where your endpoints are defined
+  apis: ['./src/Routes/*.ts', './src/Routes/*.js'], // where your endpoints are defined
 };
 
 const swaggerSpec = swaggerJsDoc(options);
 
-export default  swaggerSpec;
+export default swaggerSpec;

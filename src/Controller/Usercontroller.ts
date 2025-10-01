@@ -11,15 +11,17 @@ import { handleResponse } from '../Util/CommonUtil';
  * @return {Response} success or error response
  */
 export const userList = async (req: Request, res: Response) => {
-    try {
-        Logger.info('UserController: Reached changePassword endpoint', 'changePassword');
-        let response = [{
-            name:"vaishali"
-        }];
-        if (!response)   throwError(`Response' is missing!`, HTTP_STATUS_CODE.BAD_REQUEST);
-        handleResponse(res, response, null);
-    } catch(err: any){
-        Logger.error('UserController: Error in changePassword endpoint','changePassword', err);
-        handleResponse(res, null, err, err.code || HTTP_STATUS_CODE.BAD_REQUEST);
-    }
+  try {
+    Logger.info('UserController: Reached changePassword endpoint', 'changePassword');
+    let response = [
+      {
+        name: 'vaishali',
+      },
+    ];
+    if (!response) throwError(`Response' is missing!`, HTTP_STATUS_CODE.BAD_REQUEST);
+    handleResponse(res, response, null);
+  } catch (err: any) {
+    Logger.error('UserController: Error in changePassword endpoint', 'changePassword', err);
+    handleResponse(res, null, err, err.code || HTTP_STATUS_CODE.BAD_REQUEST);
+  }
 };

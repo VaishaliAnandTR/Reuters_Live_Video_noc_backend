@@ -1,4 +1,3 @@
-
 import rateLimit from 'express-rate-limit';
 /**
  * To Apply Rate Limits in APis
